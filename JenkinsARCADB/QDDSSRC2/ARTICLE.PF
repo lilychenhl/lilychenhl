@@ -1,0 +1,6 @@
+000100000713                                            REF(SMPREF)
+000200000713                R FARTI
+000300000713                  ARTIID    R
+000400000714                  ARTIDE    R
+000500000714                  ARTISP    R               REFFLD(ARTIPR)
+000600000714                  ARTIFA    R               REFFLD(FAMIID)

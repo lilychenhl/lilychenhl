@@ -1,0 +1,246 @@
+000001888888      *%CSTD===========================================================*
+000002888888      ** Application. : SAM        ARCAD Sample application            *
+000003888888      ** Composant. . : CUSTMNTD                      Type: DSPF       *
+000004888888      **===============================================================*
+000005888888      ** Sous-système : SHR Shared component                           *
+000006888888      ** Fonction . . :                                                *
+000007888888      ** Sous-fonction:                                                *
+000008888888      **%S=============================================================*
+000009888888      ** Description des fonctionnalités:                              *
+000011888888      **                                                               *
+000012888888      **                                                               *
+000013888888      **                                                               *
+000014888888      **%E=============================================================*
+000015888888      ** AUTEUR:    SCAGNON    27/03/2016 17:37  V 1.04.C              *
+000016888888      ** MODIFS: ** SCAGNON    27/03/2016 17:37  V 1.04.C FM 13/  960  *
+000017888888      **                                                               *
+000018888888      *%ECSTD==========================================================*
+000020160327     A*
+000021160327     A*
+000022160327     A*%%EC
+000023160327     A                                      DSPSIZ(24 80 *DS3)
+000024160327     A                                      PRINT
+000025160327     A                                      CA03
+000026160327     A                                      CA12
+000027160327     A*
+000028160327     A*
+000029160327     A          R SFL1                      SFL
+000031160327     A                                      TEXT('Customer Subfile')
+000032160327     A  74                                  SFLNXTCHG
+000033160327     A            DBIDNM    R        H      REFFLD(PFR/DBIDNM *LIBL/CUSTPF)
+000034160327     A            OPTION         1A  B 10  3VALUES(' ' '2' '4' '5')
+000035160327     A            DBLNAM    R        O 10  9REFFLD(PFR/DBLNAM *LIBL/CUSTPF)
+000036160327     A            DBFNAM    R        O 10 32REFFLD(PFR/DBFNAM *LIBL/CUSTPF)
+000037160327     A            DBMINI    R        O 10 53REFFLD(PFR/DBMINI *LIBL/CUSTPF)
+000038160327     A            DBNNAM    R        O 10 61REFFLD(PFR/DBNNAM *LIBL/CUSTPF)
+000039160327     A                                 11  9'Address:'
+000040160327     A                                      DSPATR(HI)
+000041160327     A                                 12  9'City:'
+000042160327     A                                      DSPATR(HI)
+000043160327     A                                 12 43'State:'
+000044160327     A                                      DSPATR(HI)
+000045160327     A                                 12 60'Zip:'
+000046160327     A                                      DSPATR(HI)
+000047160327     A            DBADD1    R        O 11 18REFFLD(PFR/DBADD1 *LIBL/CUSTPF)
+000048160327     A            DBCITY    R        O 12 15REFFLD(PFR/DBCITY *LIBL/CUSTPF)
+000049160327     A            DBSTATE   R        O 12 50REFFLD(PFR/DBSTATE *LIBL/CUSTPF)
+000050160327     A            DBZIP     R        O 12 65REFFLD(PFR/DBZIP *LIBL/CUSTPF)
+000051160327     A*
+000052160327     A          R SF1CTL                    SFLCTL(SFL1)
+000054160327     A                                      CF06
+000055160327     A                                      ROLLUP(60 'Page Down')
+000056160327     A                                      CF16(16 'Printer Output')
+000057160327     A                                      CF17(17 'Messages')
+000058160327     A                                      OVERLAY
+000059160327     A                                      SFLCSRRRN(&CURSORROW)
+000060160327     A N32                                  SFLDSP
+000061160327     A N31                                  SFLDSPCTL
+000062160327     A  31                                  SFLCLR
+000063160327     A  90                                  SFLEND(*MORE)
+000064160327     A                                      SFLDROP(CF11)
+000065160327     A                                      SFLSIZ(0005)
+000066160327     A                                      SFLPAG(0004)
+000067160327     A            CURSORROW      5S 0H
+000068160327     A            RRN1           4S 0H      SFLRCDNBR
+000069160327     A                                  9  9'Last Name'
+000070160327     A                                      DSPATR(HI)
+000071160327     A                                  9 32'First Name'
+000072160327     A                                      DSPATR(HI)
+000073160327     A                                  9 53'MI'
+000074160327     A                                      DSPATR(HI)
+000075160327     A                                  9 61'Nick Name'
+000076160327     A                                      DSPATR(HI)
+000077160327     A                                  1 71DATE
+000078160327     A                                      EDTCDE(Y)
+000079160327     A                                  2 71TIME
+000080160327     A                                  1 30'Customer Maintenance'
+000081160327     A                                      DSPATR(HI)
+000082160327     A                                  4  2'Position to Last Name . . .'
+000083160327     A            PTNAME        20A  B  4 30
+000084160327     A                                  9  2'Opt'
+000085160327     A                                      DSPATR(HI)
+000086160327     A                                  6  2'Type options, press Enter.'
+000087160327     A                                      COLOR(BLU)
+000088160327     A                                  7  4'2=Change'
+000089160327     A                                      COLOR(BLU)
+000090160327     A                                  7 19'4=Delete'
+000091160327     A                                      COLOR(BLU)
+000092160327     A                                  7 34'5=Display'
+000093160327     A                                      COLOR(BLU)
+000094160327     A*
+000095160327     A          R PANEL1
+000097160327     A                                      TEXT('Change/Add Record Panel')
+000098160327     A            MODE          10A  O  1  3DSPATR(HI)
+000099160327     A                                  1 30'Customer Maintenance'
+000100160327     A                                      DSPATR(HI)
+000101160327     A                                  1 71DATE
+000102160327     A                                      EDTCDE(Y)
+000103160327     A                                  2 71TIME
+000104160327     A            DBIDNM    R        O  4 23REFFLD(PFR/DBIDNM *LIBL/CUSTPF)
+000105160327     A                                      DSPATR(HI)
+000106160327     A            DBFNAM    R        B  6 23REFFLD(PFR/DBFNAM *LIBL/CUSTPF)
+000107160327     A                                      CHECK(LC)
+000108160327     A            DBLNAM    R        B  8 23REFFLD(PFR/DBLNAM *LIBL/CUSTPF)
+000109160327     A                                      CHECK(LC)
+000110160327     A            DBMINI    R        B 10 23REFFLD(PFR/DBMINI *LIBL/CUSTPF)
+000111160327     A                                      CHECK(LC)
+000112160327     A            DBNNAM    R        B 12 23REFFLD(PFR/DBNNAM *LIBL/CUSTPF)
+000113160327     A                                      CHECK(LC)
+000114160327     A            DBADD1    R        B 14 23REFFLD(PFR/DBADD1 *LIBL/CUSTPF)
+000115160327     A                                      CHECK(LC)
+000116160327     A            DBADD2    R        B 16 23REFFLD(PFR/DBADD2 *LIBL/CUSTPF)
+000117160327     A                                      CHECK(LC)
+000118160327     A            DBADD3    R        B 18 23REFFLD(PFR/DBADD3 *LIBL/CUSTPF)
+000119160327     A                                      CHECK(LC)
+000120160327     A                                 23  2'F3=Exit'
+000121160327     A                                      COLOR(BLU)
+000122160327     A                                 23 12'F12=Cancel'
+000123160327     A                                      COLOR(BLU)
+000124160327     A                                  4  3'Customer Number . .'
+000125160327     A                                  6  3'First Name. . . . .'
+000126160327     A                                  8  3'Last Name . . . . .'
+000127160327     A                                 10  3'Middle Initial. . .'
+000128160327     A                                 12  3'Nick Name . . . . .'
+000129160327     A                                 14  3'Address Line 1. . .'
+000130160327     A                                 16  3'Address Line 2. . .'
+000131160327     A                                 18  3'Address Line 3. . .'
+000132160327     A                                 20  3'City/State/Zip. . .'
+000133160327     A            DBCITY    R        B 20 23REFFLD(PFR/DBCITY *LIBL/CUSTPF)
+000134160327     A                                      CHECK(LC)
+000135160327     A            DBSTATE   R        B 20 49REFFLD(PFR/DBSTATE *LIBL/CUSTPF)
+000136160327     A  30                                  ERRMSG('State code is invalid.')
+000137160327     A            DBZIP     R        B 20 52REFFLD(PFR/DBZIP *LIBL/CUSTPF)
+000138160327     A                                      CHECK(LC)
+000139160327     A                                  4 47'Credit Rating:'
+000140160327     A            DBCRATING R        B  4 62REFFLD(PFR/DBCRATING *LIBL/CUSTPF)
+000141160327     A                                      VALUES('A ' 'A+' 'A-' 'B ' 'B+' 'B--
+000142160327     A                                      ' 'C ' 'C+' 'C-' ' ')
+000143160327     A*
+000144160327     A          R PANEL2
+000146160327     A                                      TEXT('Display Record Panel')
+000147160327     A            MODE          10A  O  1  3DSPATR(HI)
+000148160327     A                                  1 30'Customer Maintenance'
+000149160327     A                                      DSPATR(HI)
+000150160327     A                                  1 71DATE
+000151160327     A                                      EDTCDE(Y)
+000152160327     A                                  2 71TIME
+000153160327     A            DBIDNM    R        O  4 20REFFLD(PFR/DBIDNM *LIBL/CUSTPF)
+000154160327     A                                      DSPATR(HI)
+000155160327     A            DBFNAM    R        O  6 20REFFLD(PFR/DBFNAM *LIBL/CUSTPF)
+000156160327     A                                      DSPATR(HI)
+000157160327     A            DBLNAM    R        O  8 20REFFLD(PFR/DBLNAM *LIBL/CUSTPF)
+000158160327     A                                      DSPATR(HI)
+000159160327     A            DBMINI    R        O 10 20REFFLD(PFR/DBMINI *LIBL/CUSTPF)
+000160160327     A                                      DSPATR(HI)
+000161160327     A            DBNNAM    R        O 12 20REFFLD(PFR/DBNNAM *LIBL/CUSTPF)
+000162160327     A                                      DSPATR(HI)
+000163160327     A            DBADD1    R        O 14 20REFFLD(PFR/DBADD1 *LIBL/CUSTPF)
+000164160327     A                                      DSPATR(HI)
+000165160327     A            DBADD2    R        O 16 20REFFLD(PFR/DBADD2 *LIBL/CUSTPF)
+000166160327     A                                      DSPATR(HI)
+000167160327     A            DBADD3    R        O 18 20REFFLD(PFR/DBADD3 *LIBL/CUSTPF)
+000168160327     A                                      DSPATR(HI)
+000169160327     A                                 23  2'F3=Exit'
+000170160327     A                                      COLOR(BLU)
+000171160327     A                                 23 12'F12=Cancel'
+000172160327     A                                      COLOR(BLU)
+000173160327     A                                  4  3'Customer Number.'
+000174160327     A                                  6  3'First Name . . .'
+000175160327     A                                  8  3'Last Name. . . .'
+000176160327     A                                 10  3'Middle Initial .'
+000177160327     A                                 12  3'Nick Name. . . .'
+000178160327     A                                 14  3'Address Line 1 .'
+000179160327     A                                 16  3'Address Line 2 .'
+000180160327     A                                 18  3'Address Line 3 .'
+000181160327     A                                 20  3'City/State/Zip .'
+000182160327     A            DBCITY    R        O 20 20REFFLD(PFR/DBCITY *LIBL/CUSTPF)
+000183160327     A                                      DSPATR(HI)
+000184160327     A            DBSTATE   R        O 20 46REFFLD(PFR/DBSTATE *LIBL/CUSTPF)
+000185160327     A                                      DSPATR(HI)
+000186160327     A            DBZIP     R        O 20 57REFFLD(PFR/DBZIP *LIBL/CUSTPF)
+000187160327     A                                      DSPATR(HI)
+000188160327     A                                  4 47'Credit Rating:'
+000189160327     A            DBCRATING R        O  4 62REFFLD(PFR/DBCRATING *LIBL/CUSTPF)
+000190160327     A                                      DSPATR(HI)
+000191160327     A*
+000192160327     A*
+000193160327     A          R SFL2                      SFL
+000195160327     A                                      TEXT('Confirm Delete Subfile')
+000196160327     A*
+000197160327     A            DBIDNM    R        H      REFFLD(PFR/DBIDNM *LIBL/CUSTPF)
+000198160327     A            DBLNAM    R        O  7  3REFFLD(PFR/DBLNAM *LIBL/CUSTPF)
+000199160327     A            DBFNAM    R        O  7 29REFFLD(PFR/DBFNAM *LIBL/CUSTPF)
+000200160327     A*
+000201160327     A*
+000202160327     A*
+000203160327     A          R SF2CTL                    SFLCTL(SFL2)
+000205160327     A                                      TEXT('Confirm Delete')
+000206160327     A                                      OVERLAY
+000207160327     A                                      SFLDSP
+000208160327     A N41                                  SFLDSPCTL
+000209160327     A  41                                  SFLCLR
+000210160327     A N41                                  SFLEND(*MORE)
+000211160327     A                                      SFLSIZ(0016)
+000212160327     A                                      SFLPAG(0015)
+000213160327     A            RRN2           4S 0H
+000214160327     A                                  3  3'Press Enter to confirm your choice-
+000215160327     A                                      s for Delete.'
+000216160327     A                                      COLOR(BLU)
+000217160327     A                                  4  3'Press F12=Cancel to return to chan-
+000218160327     A                                      ge your choices.'
+000219160327     A                                      COLOR(BLU)
+000220160327     A                                  6  3'Last Name'
+000221160327     A                                      DSPATR(HI)
+000222160327     A                                  6 29'First Name'
+000223160327     A                                      DSPATR(HI)
+000224160327     A                                  1 28'Confirm Delete of Records'
+000225160327     A                                      DSPATR(HI)
+000226160327     A*
+000227160327     A*
+000228160327     A*
+000229160327     A*
+000230160327     A          R FKEY1
+000232160327     A*
+000233160327     A                                 23  2'F3=Exit'
+000234160327     A                                      COLOR(BLU)
+000235160327     A                                 23 12'F6=Add'
+000236160327     A                                      COLOR(BLU)
+000237160327     A                                 23 39'F12=Cancel'
+000238160327     A                                      COLOR(BLU)
+000239160327     A                                 23 21'F11=Fold/Unfold'
+000240160327     A                                      COLOR(BLU)
+000241160327     A                                 24  2'F16=Printer Output'
+000242160327     A                                      COLOR(BLU)
+000243160327     A                                 24 23'F17=Messages'
+000244160327     A                                      COLOR(BLU)
+000245160327     A*
+000246160327     A          R FKEY2
+000247160327     A*
+000248160327     A                                 23  2'F3=Exit'
+000249160327     A                                      COLOR(BLU)
+000250160327     A                                    +3'F12=Cancel'
+000251160327     A                                      COLOR(BLU)
+000252160327     A          R FKEY3
+000253160327     A*
+000254160327     A                                 23  2'F12=Cancel'
+000255160327     A                                      COLOR(BLU)

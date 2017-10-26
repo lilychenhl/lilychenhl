@@ -1,0 +1,39 @@
+000001888888     --%CSTD===========================================================*
+000002888888     --* Application. : ARC ARCAD                                      *
+000003888888     --* Composant. . : AARD060P2                     Type: SQLPRC     *
+000004888888     --*===============================================================*
+000005888888     --* Sous-système : REP Repository - Référentiel avec notion de    *
+000006888888     --* Fonction . . : OBJ Référentiel objets (composants src+obj)    *
+000007888888     --* Sous-fonction: IFS Nom IFS des composants                     *
+000008888888     --*%S=============================================================*
+000009888888     --* Description des fonctionnalités:                              *
+000011888888     --*                                                               *
+000012888888     --*                                                               *
+000013888888     --*                                                               *
+000014888888     --*%E=============================================================*
+000015888888     --* AUTEUR:    GILBERT    19/11/2009 03:08  09.00.10              *
+000016888888     --* MODIFS: 01 GILBERT    13/12/2010 14:11  09.00.20 FM N°10/0305 *
+000017888888     --*           Modification après transformation unicode           *
+000018888888     --*         ** GILBERT    19/11/2009 03:08  09.00.10 FM N°09/0422 *
+000019888888     --*           Application Renommage des zones et composants       *
+000020888888     --*           ======> ART407P2   renommé en   AARD060P2   <====== *
+000021888888     --*         01 KDYKINS    19/11/2009 00:00  08.06.00 FM N°07/0056 *
+000022888888     --*           FA 06/0813 Pb livraison en Cum SQLPRC/SQLUDF de Ve  *
+000023888888     --*         ** GILBERT    28/12/2005 09:36    8.05.A FM N°05/0354 *
+000024888888     --*           FA 05/0355 Option 'Déplacer' sur objet IFS avec Je  *
+000025888888     --%ECSTD==========================================================*
+002500000000
+002600051213
+002700051213CREATE PROCEDURE IFS_IDGEN (
+002800101213    IN E_XPATHNAME GRAPHIC(755) CCSID 13488 ,
+002900091119    IN E_NLGMAXI DECIMAL(5, 0) ,
+003000101213    OUT E_CIDGEN GRAPHIC(10) CCSID 13488)
+003100051213  LANGUAGE RPGLE
+003200091119  SPECIFIC AARD060P2
+003300051213  NO SQL
+003400091119  EXTERNAL NAME             AARD060G2
+003500051213  PARAMETER STYLE SQL ;
+003600051213
+003700091119COMMENT ON SPECIFIC PROCEDURE AARD060P2
+003800051213  IS 'Get Id from Ifs Object' ;
+003900051213

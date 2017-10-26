@@ -1,0 +1,39 @@
+000001888888     --%CSTD===========================================================*
+000002888888     --* Application. : STD Standard application                       *
+000003888888     --* Component. . : CRTHS_5001                    Type: SQLPRC     *
+000004888888     --*===============================================================*
+000005888888     --* Sub-system . :                                                *
+000006888888     --* Function . . :                                                *
+000007888888     --* Sub-function :                                                *
+000008888888     --*%S=============================================================*
+000009888888     --* Description of functions:                                     *
+000011888888     --*                                                               *
+000012888888     --*                                                               *
+000013888888     --*                                                               *
+000014888888     --*%E=============================================================*
+000015888888     --* AUTHOR:    MICHEL     11/21/2012 06:31  V 1.00.D              *
+000016888888     --* MODIFS: ** MICHEL     11/21/2012 06:31  V 1.00.D MR # 12/0029 *
+000017888888     --*           Demo for INSDATA                                    *
+000018888888     --%ECSTD==========================================================*
+001800121121--  Generate SQL
+001900121121--  Version:                   V5R4M0 060210
+002000121121--  Generated on:              11/21/12 06:21:57
+002100121121--  Relational Database:       S654330E
+002200121121--  Standards Option:          DB2 UDB iSeries
+002300121121
+002400121121CREATE PROCEDURE CRTHSVORDER (
+002500121121  IN ORDERTYPE CHAR(3) ,
+002600121121  IN CUSTOMERID CHAR(8) ,
+002700121121  IN PRODUCTID CHAR(13) ,
+002800121121  IN PRODUCTDESCRIPTION CHAR(40) ,
+002900121121  IN PRODUCTPRICE DECIMAL(20, 5) ,
+003000121121  IN PRODUCTQUANTITY DECIMAL(15, 0) ,
+003100121121  IN ORDERNUMBER  DECIMAL( 8, 0) )
+003200121121  LANGUAGE RPGLE
+003300121121  SPECIFIC CRTHSVORDER
+003400121121  NOT DETERMINISTIC
+003500121121  CONTAINS SQL
+003600121121  CALLED ON NULL INPUT
+003700121121  EXTERNAL NAME HSR200ECS
+003800121121  PARAMETER STYLE GENERAL ;
+003900121121

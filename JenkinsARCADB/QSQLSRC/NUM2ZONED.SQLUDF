@@ -1,0 +1,28 @@
+000001888888     --%CSTD===========================================================*
+000002888888     --* Application. : HG8 SGOMES V8                                  *
+000003888888     --* Composant. . : NUM2ZONED                     Type: SQLUDF     *
+000004888888     --*===============================================================*
+000005888888     --* Sous-système :                                                *
+000006888888     --* Fonction . . :                                                *
+000007888888     --* Sous-fonction:                                                *
+000008888888     --*%S=============================================================*
+000009888888     --* Description des fonctionnalités:                              *
+000011888888     --*                                                               *
+000012888888     --*                                                               *
+000013888888     --*                                                               *
+000014888888     --*%E=============================================================*
+000015888888     --* AUTEUR:    SGOMES     21/07/2016 09:46  V 1.04.V              *
+000016888888     --* MODIFS: ** SGOMES     21/07/2016 09:46  V 1.04.V FM N°99/0510 *
+000017888888     --*           IR 99/0516 When printing HSW230, I have time to go  *
+000018888888     --%ECSTD==========================================================*
+000100160721     CREATE FUNCTION NUM2ZONED(VARCHAR(65), INTEGER, INTEGER)
+000200160721      RETURNS VARCHAR(65)
+000300160721      EXTERNAL NAME ALXSQLTB(NUM2ZONED)
+000400160721      LANGUAGE C
+000500160721      DETERMINISTIC
+000600160721      NO SQL
+000700160721      NOT FENCED
+000800160721      PROGRAM TYPE SUB
+000900160721      PARAMETER STYLE SQL
+001000160721      RETURNS NULL ON NULL INPUT
+001100160721      NO EXTERNAL ACTION;

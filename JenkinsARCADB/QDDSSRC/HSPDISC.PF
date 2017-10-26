@@ -1,0 +1,22 @@
+000100000000      **************************************************************
+000200000000      *                                                            *
+000300990215      *  File Name  :  HSPDISC                                     *
+000400000000      *                                                            *
+000500990215      *  Description:  Customer Discount File                      *
+000600000000      *                                                            *
+000700990215      *  Date       :  Februrary 1999                              *
+000800000000      *                                                            *
+000900000000      **************************************************************
+001000990115     A                                      REF(*LIBL/HSPREF)
+001100990216     A          R HSFDISC
+001200990215      *  Description:  Customer Discount File
+001300990215     A            PCTYP     R               REFFLD(ECTYP)
+001400990215     A            PDAYS          2  0       TEXT('PAYMENT TERM DAYS')
+001500990216     A                                      COLHDG('PAYMENT' 'TERM' 'DAYS')
+001600990215     A            PFAMT         10  0       TEXT('ORDER AMOUNT FROM RANGE')
+001700990216     A                                      COLHDG('ORDER' 'AMOUNT' 'FROM')
+001800990216     A            PTAMT         10  0       TEXT('ORDER AMOUNT TO RANGE')
+001900990216     A                                      COLHDG('ORDER' 'AMOUNT' 'TO')
+002000990215     A            PDISC     R               REFFLD(DISP)
+002100990219     A            PDELT     R               REFFLD(A1)
+002200990219     A                                      COLHDG('Deletion Flag')
