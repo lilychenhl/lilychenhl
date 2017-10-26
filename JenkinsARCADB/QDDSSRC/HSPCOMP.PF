@@ -15,3 +15,4 @@
 001500990115     A                                      COLHDG('Company Text')
 001600990115     A            WDELT     R               REFFLD(A1)
 001700990115     A                                      COLHDG('Deletion Flag')
+001701171026     A*  Test for jenkinks arcad build
